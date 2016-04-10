@@ -41,10 +41,10 @@ class mod_forum_observer {
         // Get user enrolment info from event.
         $cp = (object)$event->other['userenrolment'];
         if ($cp->lastenrol) {
-			if (!$forums = $DB->get_records('forum', array('course' => $cp->courseid), '', 'id'))
-				return;
-			list($forumselect, $params) = $DB->get_in_or_equal(array_keys($forums));
-			array_unshift($params, $cp->userid);
+            if (!$forums = $DB->get_records('forum', array('course' => $cp->courseid), '', 'id'))
+                return;
+            list($forumselect, $params) = $DB->get_in_or_equal(array_keys($forums));
+            array_unshift($params, $cp->userid);
 
             $DB->delete_records_select('forum_digests', 'userid = ? AND forum '.$forumselect, $params);
             $DB->delete_records_select('forum_subscriptions', 'userid = ? AND forum '.$forumselect, $params);
