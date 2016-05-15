@@ -322,7 +322,8 @@ class page_requirements_manager {
                 'theme'               => $page->theme->name,
                 'jsrev'               => $this->get_jsrev(),
                 'admin'               => $CFG->admin,
-                'svgicons'            => $page->theme->use_svg_icons()
+                'svgicons'            => $page->theme->use_svg_icons(),
+                'direction'           => get_string('thisdirection', 'langconfig')
             );
             if ($CFG->debugdeveloper) {
                 $this->M_cfg['developerdebug'] = true;
